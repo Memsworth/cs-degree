@@ -1,4 +1,4 @@
-﻿namespace CSharpPlayersGuide.level03
+﻿namespace CSharpPlayersGuide.Level03
 {
     internal class ChallengeConsolasTelim : IExercise
     {

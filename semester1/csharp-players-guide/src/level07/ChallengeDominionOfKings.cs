@@ -1,4 +1,4 @@
-﻿namespace CSharpPlayersGuide.level07
+﻿namespace CSharpPlayersGuide.Level07
 {
     internal class ChallengeDominionOfKings : IExercise
     {

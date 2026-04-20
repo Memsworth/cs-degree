@@ -1,5 +1,5 @@
 ﻿using CSharpPlayersGuide;
-using CSharpPlayersGuide.level08;
+using CSharpPlayersGuide.Level11;
 
-IExercise exercise = new ChallengeDefenseOfConsolas();
+IExercise exercise = new ChallengeMagicCannon();
 exercise.Run();

@@ -1,4 +1,4 @@
-﻿namespace CSharpPlayersGuide.level04
+﻿namespace CSharpPlayersGuide.Level04
 {
     internal class ChallengeThingNamer3000 : IExercise
     {

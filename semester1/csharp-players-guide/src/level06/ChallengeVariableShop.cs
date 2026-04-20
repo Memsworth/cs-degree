@@ -1,4 +1,4 @@
-﻿namespace CSharpPlayersGuide.level06
+﻿namespace CSharpPlayersGuide.Level06
 {
     internal class ChallengeVariableShop : IExercise
     {

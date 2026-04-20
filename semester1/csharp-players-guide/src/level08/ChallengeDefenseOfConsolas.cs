@@ -1,4 +1,4 @@
-﻿namespace CSharpPlayersGuide.level08
+﻿namespace CSharpPlayersGuide.Level08
 {
     internal class ChallengeDefenseOfConsolas : IExercise
     {
