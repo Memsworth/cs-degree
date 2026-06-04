@@ -3,37 +3,82 @@
 
 public interface IGate
 {
-    public bool Result();
+    public bool Output();
 }
 
 public class NandGate : IGate
 {
-    public bool A { get; }
-    public bool B { get; }
+    private readonly Func<bool> A;
+    private readonly Func<bool> B;
 
-    public NandGate(bool a, bool b)
+    public NandGate(Func<bool> a, Func<bool> b)
     {
         A = a;
         B = b;
     }
-    public bool Result() => !(A && B);
+    public bool Output() => !(A() && B());
 }
 
 public class NotGate : IGate
 {
-    public NandGate Not { get; }
-    public NotGate(bool A)
+    private readonly IGate outPutGate;
+    public NotGate(Func<bool> a)
     {
-        Not = new NandGate(A, A);
+        outPutGate = new NandGate(a, a);
     }
-    public bool Result() => Not.Result();
+    public bool Output() => outPutGate.Output();
 }
 
 public class AndGate : IGate
 {
+    private readonly IGate outPutGate;
+    public AndGate(Func<bool> a, Func<bool> b)
+    {
+        var nand = new NandGate(a, b);
+        outPutGate = new NotGate(nand.Output);
+    }
+    public bool Output() => outPutGate.Output();
 }
 
 
 public class OrGate : IGate
 {
+    private readonly IGate outPutGate;
+    public OrGate(Func<bool> a, Func<bool> b)
+    {
+        var nandA = new NandGate(a, a);
+        var nandB = new NandGate(b, b);
+        outPutGate = new NandGate(nandA.Output, nandB.Output);
+    }
+    public bool Output() => outPutGate.Output();
+}
+
+
+public class XorGate : IGate
+{
+    private readonly IGate outPutGate;
+    public XorGate(Func<bool> a, Func<bool> b)
+    {
+        var firstTerm = new AndGate(a, new NotGate(b).Output);
+        var secondTerm = new AndGate(new NotGate(a).Output, b);
+
+        outPutGate = new OrGate(firstTerm.Output, secondTerm.Output);
+    }
+
+    public bool Output() => outPutGate.Output();
+}
+
+public class Multiplexer : IGate
+{
+    private readonly IGate outPutGate;
+    public Multiplexer(Func<bool> a, Func<bool> b, Func<bool> sel)
+    {
+        var notSel = new NotGate(sel);
+        var firstTerm = new AndGate(a, notSel.Output);
+        var secondTerm = new AndGate(sel, b);
+
+        outPutGate = new OrGate(firstTerm.Output, secondTerm.Output);
+    }
+
+    public bool Output() => outPutGate.Output();
 }
