@@ -6,6 +6,11 @@ public interface IGate
     public bool Output();
 }
 
+public interface IGateTwoOutputs : IGate
+{
+    public bool SecondOut();
+}
+
 public class NandGate : IGate
 {
     private readonly Func<bool> A;
@@ -81,4 +86,54 @@ public class Multiplexer : IGate
     }
 
     public bool Output() => outPutGate.Output();
+}
+
+public class Demultiplexer
+{
+    private readonly IGate outPutGateA;
+    private readonly IGate outPutGateB;
+
+    public Demultiplexer(Func<bool> input, Func<bool> sel)
+    {
+        var notSel = new NotGate(sel);
+        outPutGateA = new AndGate(input, notSel.Output);
+        outPutGateB = new AndGate(input, sel);
+    }
+
+    public (bool outputA, bool outputB) Output()
+    {
+        return (outPutGateA.Output(), outPutGateB.Output());
+    }
+}
+
+
+
+
+
+/*-------------------------------------------------------------------*/
+
+
+//MULTIBIT STUFF
+
+
+public interface IMultiGate
+{
+    public bool[] Outputs();
+}
+
+public class MultiNot : IMultiGate
+{
+    private readonly Func<bool[]> A;
+    private readonly Func<bool[]> B;
+
+    public MultiNot(Func<bool[]> input)
+    {
+
+    }
+    public bool Output() => !(A() && B());
+
+    public bool[] Outputs()
+    {
+        throw new NotImplementedException();
+    }
 }
