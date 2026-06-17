@@ -1,11 +1,13 @@
-public class C1_17
+namespace data_structures.chapter1;
+
+public class C17 : IExercise
 {
     private static readonly Random rand = new Random();
 
-    public static void Run()
+    public void Run()
     {
         var testArray = new int[rand.Next(5, 10)];
-        for (int i = 0; i < testArray; i++)
+        for (int i = 0; i < testArray.Length; i++)
             testArray[i] = rand.Next(1, 10);
 
         var isTrue = false;
@@ -19,9 +21,6 @@ public class C1_17
             }
         }
 
-        if (isTrue)
-            System.Console.WriteLine("There is a pair");
-        else
-            System.Console.WriteLine("There isn't a pair");
+        System.Console.WriteLine(isTrue ? "There is a pair" : "There isn't a pair");
     }
 }

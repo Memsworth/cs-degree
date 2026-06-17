@@ -1,13 +1,15 @@
-public class C1_14
+namespace data_structures.chapter1;
+
+public class C14 : IExercise
 {
+    
     private static readonly Random rand = new Random();
 
-    public static void Run()
+    public void Run()
     {
         var testArray = new int[rand.Next(5, 10)];
-        for (int i = 0; i < testArray; i++)
+        for (int i = 0; i < testArray.Length; i++)
             testArray[i] = rand.Next(10);
-
 
         var copyArray = new int[testArray.Length];
 

@@ -1,7 +1,4 @@
-
-
-//var exercise = new 
-//exercise.Run();
+namespace data_structures;
 
 public interface IExercise
 {

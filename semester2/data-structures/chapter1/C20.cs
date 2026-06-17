@@ -1,8 +1,10 @@
-public class C1_20
+namespace data_structures.chapter1;
+
+public class C20 : IExercise
 {
     private static readonly Random rand = new Random();
 
-    public static void Run()
+    public void Run()
     {
         var randArray = new double[rand.Next(5, 15)];
         for (int i = 0; i < randArray.Length; i++)

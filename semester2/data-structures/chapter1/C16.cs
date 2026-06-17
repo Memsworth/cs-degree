@@ -1,14 +1,15 @@
-public class C1_16
-{
+namespace data_structures.chapter1;
 
-    public static void Run()
+public class C16 : IExercise
+{
+    public void Run()
     {
         System.Console.WriteLine("enter 3 number: ");
 
         var userInput = Console.ReadLine();
 
         var tokens = userInput.Split(' ')
-        .Select(x => int.Parse(x)).ToArray();
+            .Select(x => int.Parse(x)).ToArray();
 
 
         var isTrue = false;
@@ -30,7 +31,6 @@ public class C1_16
             System.Console.WriteLine("a * b = c");
             isTrue = true;
         }
-
         if (!isTrue)
             System.Console.WriteLine("No formula is used");
     }

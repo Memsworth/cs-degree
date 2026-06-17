@@ -1,14 +1,8 @@
-#!
 using System.Text;
 
+namespace data_structures.chapter1;
 
-System.Console.WriteLine("Hello");
-
-var test = new P1_26();
-test.Run();
-
-
-public class P1_26
+public class P26 : IExercise
 {
     public void Run()
     {

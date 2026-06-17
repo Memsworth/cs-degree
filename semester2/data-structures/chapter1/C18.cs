@@ -1,9 +1,9 @@
+namespace data_structures.chapter1;
 
-
-public class C1_18
+public class C18 : IExercise
 {
     private static readonly Random rand = new Random();
-    public static void Run()
+    public void Run()
     {
         var randArray = new Point[rand.Next(5, 15)];
         var powOf = rand.Next(2, 5);
@@ -22,6 +22,5 @@ public class C1_18
         System.Console.WriteLine(fullVal);
 
     }
-
     public record Point(int x, int y);
 }

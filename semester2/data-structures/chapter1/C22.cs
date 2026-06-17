@@ -1,6 +1,6 @@
-//TODO: solved later
+namespace data_structures.chapter1;
 
-public class C1_22
+public class C22 : IExercise
 {
     private readonly string items = "catdog";
 
@@ -11,13 +11,11 @@ public class C1_22
         Permuate(charArray, 0);
     }
 
-    public void Permuate(char[] chars, int start)
+    private void Permuate(char[] chars, int start)
     {
         if (start == chars.Length - 1)
         {
             System.Console.WriteLine();
         }
-
-
     }
 }

@@ -1,6 +1,8 @@
-public class C1_19
+namespace data_structures.chapter1;
+
+public class C19 : IExercise
 {
-    public static void Run()
+    public void Run()
     {
         var target = 0;
 
@@ -21,4 +23,3 @@ public class C1_19
         System.Console.WriteLine($"Amount of times: {target}");
     }
 }
-

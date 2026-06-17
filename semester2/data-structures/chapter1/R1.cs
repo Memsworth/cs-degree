@@ -1,10 +1,8 @@
-System.Console.WriteLine("Test");
+namespace data_structures.chapter1;
 
-InputAllBaseTypesExample.InputAllBaseTypes();
-
-public class InputAllBaseTypesExample
+public class R1 : IExercise
 {
-    public static void InputAllBaseTypes()
+    public void Run()
     {
         Console.Write("byte: ");
         var b = byte.Parse(Console.ReadLine());

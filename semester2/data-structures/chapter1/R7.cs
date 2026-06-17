@@ -1,6 +1,13 @@
-public class R1_7
+namespace data_structures.chapter1;
+
+public class R7 : IExercise
 {
-    public static void GetSum(int i)
+    public void Run()
+    {
+        GetSum(5);
+    }
+    
+    private static void GetSum(int i)
     {
         if (i <= 0)
         {
