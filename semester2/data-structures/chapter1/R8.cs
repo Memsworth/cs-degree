@@ -1,14 +1,12 @@
-namespace data_structures.chapter1;
-
-public class R8 : IExercise
+public class R8
 {
     private readonly string vowels = "aeiou";
-    
+
     public void Run()
     {
         IsVowel(Console.ReadLine());
     }
-    
+
 
     private void IsVowel(string userInput)
     {

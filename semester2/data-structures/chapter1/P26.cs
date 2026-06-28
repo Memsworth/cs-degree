@@ -1,8 +1,7 @@
 using System.Text;
 
-namespace data_structures.chapter1;
 
-public class P26 : IExercise
+public class P26
 {
     public void Run()
     {

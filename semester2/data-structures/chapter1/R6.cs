@@ -1,12 +1,11 @@
-namespace data_structures.chapter1;
 
-public class R6 : IExercise
+public class R6
 {
     public void Run()
     {
         GetSum(5);
     }
-    
+
     private static void GetSum(int i)
     {
         if (i <= 0)

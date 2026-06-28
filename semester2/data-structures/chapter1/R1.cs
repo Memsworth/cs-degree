@@ -1,6 +1,4 @@
-namespace data_structures.chapter1;
-
-public class R1 : IExercise
+public class R1
 {
     public void Run()
     {

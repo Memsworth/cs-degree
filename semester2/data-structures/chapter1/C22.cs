@@ -1,6 +1,4 @@
-namespace data_structures.chapter1;
-
-public class C22 : IExercise
+public class C22
 {
     private readonly string items = "catdog";
 

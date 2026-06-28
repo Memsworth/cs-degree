@@ -1,6 +1,5 @@
-namespace data_structures.chapter1;
 
-public class C19 : IExercise
+public class C19
 {
     public void Run()
     {

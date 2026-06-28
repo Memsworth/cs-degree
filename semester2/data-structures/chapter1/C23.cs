@@ -1,6 +1,4 @@
-namespace data_structures.chapter1;
-
-public class C23 : IExercise
+public class C23
 {
     private static readonly Random rand = new Random();
 

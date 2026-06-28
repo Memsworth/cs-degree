@@ -1,8 +1,7 @@
 using System.Text;
 
-namespace data_structures.chapter1;
 
-public class R9 : IExercise
+public class R9
 {
     private readonly string message = "Let’s try, Mike!";
 

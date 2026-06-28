@@ -1,6 +1,5 @@
-namespace data_structures.chapter1;
 
-public class R11 : IExercise
+public class R11
 {
     public void Run()
     {
@@ -31,7 +30,7 @@ public class R11 : IExercise
             }
         }
     }
-    
+
     public class CreditCard
     {
         public string Customer { get; private set; }

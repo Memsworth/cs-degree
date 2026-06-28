@@ -1,6 +1,4 @@
-namespace data_structures.chapter1;
-
-public class C21 : IExercise
+public class C21
 {
     private static readonly Random rand = new Random();
     public void Run()

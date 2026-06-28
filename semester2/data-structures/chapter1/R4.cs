@@ -1,13 +1,12 @@
-namespace data_structures.chapter1;
 
-public class R4 : IExercise
+public class R4
 {
     public void Run()
     {
         var result = IsEven(2);
         Console.WriteLine(result);
     }
-    
+
     private static bool IsEven(int i)
     {
         if (i == 0)

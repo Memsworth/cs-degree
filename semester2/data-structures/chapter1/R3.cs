@@ -1,6 +1,4 @@
-namespace data_structures.chapter1;
-
-public class R3 : IExercise
+public class R3
 {
     private static bool IsMultiple(long n, long m)
     {

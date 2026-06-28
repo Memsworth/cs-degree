@@ -1,6 +1,4 @@
-namespace data_structures.chapter1;
-
-public class C16 : IExercise
+public class C16
 {
     public void Run()
     {

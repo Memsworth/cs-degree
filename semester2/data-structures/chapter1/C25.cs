@@ -1,6 +1,5 @@
-namespace data_structures.chapter1;
 
-public class C25 : IExercise
+public class C2
 {
     public class CreditCard
     {

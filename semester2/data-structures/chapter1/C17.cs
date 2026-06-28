@@ -1,6 +1,5 @@
-namespace data_structures.chapter1;
 
-public class C17 : IExercise
+public class C17
 {
     private static readonly Random rand = new Random();
 
