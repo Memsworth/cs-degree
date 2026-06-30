@@ -236,7 +236,7 @@
         public class Dungeoun
         {
             public RoomType[,] Board { get; set; }
-            public bool IsFountainActive { get; set;  }
+            public bool IsFountainActive { get; set; }
             public Dungeoun()
             {
                 Board = GetGameSize();
