@@ -1,14 +1,15 @@
+#!
 //Cryptography
 
 var cipher = new CaeserCipher();
 
 var message = "THE EAGLE IS IN PLAY; MEET AT JOE'S.";
 
-var coded = cipher.Encrypt(message);
+var coded = cipher.EncryptWithCreate(message);
 
 System.Console.WriteLine($"Encode: {coded}");
 
-var decoded = cipher.Decrypt(coded);
+var decoded = cipher.DecryptWithCreate(coded);
 
 System.Console.WriteLine($"Decrypted: {decoded}");
 
@@ -38,9 +39,28 @@ public class CaeserCipher
                 messageArray[i] = item;
             }
         }
+        return new string(messageArray);
+    }
 
+    //Kana's suggestion: Use string . create for performance (stops copying in heap)
+    public string EncryptWithCreate(string message)
+    {
         //Kana's suggestion: Use string . create for performance
-        return string.Create(messageArray);
+        return string.Create(message.Length, (object?)null, (span, _) =>
+        {
+            for (var i = 0; i < message.Length; i++)
+            {
+                if (Char.IsUpper(message[i]))
+                {
+                    var item = (char)('A' + (message[i] + rotation) % 26);
+                    span[i] = item;
+                }
+                else
+                {
+                    span[i] = message[i];
+                }
+            }
+        });
     }
 
 
@@ -55,7 +75,28 @@ public class CaeserCipher
                 messageArray[i] = item;
             }
         }
-        return string.Create(messageArray);
+        return new string(messageArray);
     }
 
+
+
+    //Kana's suggestion: Use string . create for performance (stops the copying in heap)
+    public string DecryptWithCreate(string message)
+    {
+        return string.Create(message.Length, (object?)null, (span, _) =>
+        {
+            for (var i = 0; i < message.Length; i++)
+            {
+                if (Char.IsUpper(message[i]))
+                {
+                    var item = (char)('A' + (message[i] - rotation + 26) % 26);
+                    span[i] = item;
+                }
+                else
+                {
+                    span[i] = message[i];
+                }
+            }
+        });
+    }
 }
