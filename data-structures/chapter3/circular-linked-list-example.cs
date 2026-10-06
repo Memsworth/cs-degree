@@ -1,16 +1,14 @@
-#!
-
-interface CirculatLinkedList<T>
+interface ICircularLinkedList<T>
 {
-    public void Rotate();
+    void Rotate();
 }
 
-
-interface LinkedList<T>
+interface ILinkedList<T>
 {
-    public void AddFirst(T data);
+    void AddFirst(T data);
+    void AddLast(T data);
+    T? RemoveFirst();
 }
-
 
 public class Node<T>
 {
@@ -24,4 +22,66 @@ public class Node<T>
     }
 }
 
+public class MyList<T> : ICircularLinkedList<T>, ILinkedList<T>
+{
+    private Node<T>? Tail { get; set; }
 
+    public int Size { get; private set; }
+
+    public MyList()
+    {
+        Tail = null;
+        Size = 0;
+    }
+
+    public void AddFirst(T data)
+    {
+        var newNode = new Node<T>(data);
+
+        if (Tail == null)
+        {
+            Tail = newNode;
+            Tail.Next = Tail;
+        }
+        else
+        {
+            newNode.Next = Tail.Next;
+            Tail.Next = newNode;
+        }
+
+        Size++;
+    }
+
+    public void AddLast(T data)
+    {
+        AddFirst(data);
+        Tail = Tail!.Next;
+    }
+
+    public T? RemoveFirst()
+    {
+        if (Tail == null)
+            return default;
+
+        var head = Tail.Next!;
+
+        if (head == Tail)
+        {
+            Tail = null;
+        }
+        else
+        {
+            Tail.Next = head.Next;
+        }
+
+        Size--;
+
+        return head.Data;
+    }
+
+    public void Rotate()
+    {
+        if (Tail != null)
+            Tail = Tail.Next;
+    }
+}
