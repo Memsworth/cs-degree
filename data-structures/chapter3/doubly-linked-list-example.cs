@@ -81,9 +81,7 @@ public class DoubleLinkedList<T> : ILinkedList<T>
         var data = Head.Data;
 
         if (Head == Tail)
-        {
             Head = Tail = null;
-        }
         else
         {
             Head = Head.Next;
@@ -102,9 +100,7 @@ public class DoubleLinkedList<T> : ILinkedList<T>
         var data = Tail.Data;
 
         if (Head == Tail)
-        {
             Head = Tail = null;
-        }
         else
         {
             Tail = Tail.Prev;
