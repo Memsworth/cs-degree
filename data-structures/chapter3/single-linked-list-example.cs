@@ -1,5 +1,7 @@
 #!
 
+using System.Runtime.InteropServices;
+
 var myTestList = new LinkedList<int>();
 System.Console.WriteLine(myTestList);
 myTestList.AddAt(0, 10);
@@ -127,7 +129,7 @@ public class LinkedList<T> : ILinkedList<T>
     public Node<T>? Remove(T data)
     {
         if (Size == 0)
-            throw new ArgumentOutOfRangeException();
+            return null;
 
         var currentNode = Head;
         var previousNode = Head;
@@ -180,11 +182,61 @@ public class LinkedList<T> : ILinkedList<T>
 
     public Node<T>? RemoveAt(int i)
     {
-        throw new NotImplementedException();
+        if (i < 0 || i >= Size)
+            throw new ArgumentOutOfRangeException(nameof(i));
+
+        if (i == 0)
+        {
+            if (Head is null)
+                return null;
+
+            var removedHead = Head;
+
+            if (Head == Tail)
+            {
+                removedHead.Next = null;
+                Head = Tail = null;
+            }
+            else
+            {
+                Head = Head.Next;
+                removedHead.Next = null;
+            }
+            Size--;
+            return removedHead;
+        }
+
+
+
+
+        // Remove the head
+        var previousNode = Head;
+        var currentNode = Head;
+
+        // Go to the node before index i
+        for (int j = 0; j < i - 1; j++)
+            previousNode = previousNode.Next;
+
+        currentNode = previousNode.Next;
+
+
+        if (currentNode == Tail)
+        {
+            previousNode.Next = null;
+            Tail = previousNode;
+        }
+        else
+        {
+            previousNode.Next = currentNode.Next;
+            currentNode.Next = null;
+        }
+        Size--;
+        return currentNode;
     }
 
     public Node<T>? RemoveFirst() => RemoveAt(0);
-    public Node<T>? RemoveLast() => RemoveAt(Size);
+
+    public Node<T>? RemoveLast() => RemoveAt(Size - 1);
 }
 
 public class NewLinkedList<T>
