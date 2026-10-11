@@ -11,6 +11,69 @@ public class Node<T>
     }
 }
 
+public interface ILinkedList<T>
+{
+    Node<T>? Remove(T data);
+    Node<T>? RemoveFirst();
+    Node<T>? RemoveLast();
+    void AddAt(int i, T data);
+    void AddFirst(T data);
+    void AddLast(T data);
+}
+
+public class LinkedList<T> : ILinkedList<T>
+{
+
+    public Node<T>? Head { get; private set; }
+    public Node<T>? Tail { get; private set; }
+    public int Size { get; private set; }
+    public LinkedList()
+    {
+        Head = null;
+        Tail = null;
+        Size = 0;
+    }
+
+
+    public void AddAt(int i, T data)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void AddFirst(T data)
+    {
+        if (Head is null)
+        {
+            Head = new Node<T>(data);
+            if (Tail is null)
+                Tail = Head;
+            return;
+        }
+
+        throw new NotImplementedException();
+    }
+
+    public void AddLast(T data)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Node<T>? Remove(T data)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Node<T>? RemoveFirst()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Node<T>? RemoveLast()
+    {
+        throw new NotImplementedException();
+    }
+}
+
 public class NewLinkedList<T>
 {
     public int Size { get; private set; }
