@@ -24,40 +24,22 @@ public class Scoreboard
 
     public void Add(GameEntry entry)
     {
-        int newScore = entry.Score;
-
-        // Check whether the entry qualifies for the scoreboard.
-        if (numEntries < board.Length ||
-            newScore > board[numEntries - 1].Score)
-        {
-            if (numEntries < board.Length)
-                numEntries++;
-
-            // Shift lower scores to the right.
-            int j = numEntries - 1;
-
-            while (j > 0 && board[j - 1].Score < newScore)
-            {
-                board[j] = board[j - 1];
-                j--;
-            }
-
-            board[j] = entry;
-        }
+        if (numEntries < board.Length)
+            board[numEntries++] = entry;
+        else
+            System.Console.WriteLine("Error! Array is full");
     }
 
     public GameEntry Remove(int index)
     {
-        if (index < 0 || index >= numEntries)
+        if (index < 0 || index >= numEntries || numEntries == 0)
             throw new ArgumentOutOfRangeException(nameof(index));
 
         GameEntry removedEntry = board[index];
 
-        // Shift remaining entries to the left.
-        for (int j = index; j < numEntries - 1; j++)
-            board[j] = board[j + 1];
-
-        board[--numEntries] = null;
+        board[index] = board[numEntries - 1];
+        board[numEntries - 1] = null;
+        numEntries--;
 
         return removedEntry;
     }
