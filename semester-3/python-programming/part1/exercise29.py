@@ -1,0 +1,10 @@
+def main():
+    celsius = float(input("Enter the temperature in Celsius: "))
+
+    fahrenheit = (celsius * 9 / 5) + 32
+    kelvin = celsius + 273.15
+
+    print(f"Temperature in Fahrenheit: {fahrenheit:.2f} °F")
+    print(f"Temperature in Kelvin: {kelvin:.2f} K")
+
+main()
