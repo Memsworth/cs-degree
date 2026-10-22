@@ -12,7 +12,7 @@ public class Node<T>
 
 public interface IExercise<T>
 {
-    public void Swap(Node<T> nodeOne, Node<T> nodeTwo);
+    public void ReverseList();
 }
 public interface ILinkedList<T>
 {
@@ -24,6 +24,8 @@ public interface ILinkedList<T>
     void AddFirst(T data);
     void AddLast(T data);
     public void Concat(LinkedList<T> newList);
+    public void Swap(Node<T> nodeOne, Node<T> nodeTwo);
+
 }
 
 public class LinkedList<T> : ILinkedList<T>, IExercise<T>
@@ -241,6 +243,104 @@ public class LinkedList<T> : ILinkedList<T>, IExercise<T>
         if (nodeOne is null || nodeTwo is null)
             throw new ArgumentNullException();
 
-        
+
+        if (nodeOne == nodeTwo)
+            return;
+
+        Node<T>? prevOne = null;
+        Node<T>? prevTwo = null;
+        var current = Head;
+
+        while (current is not null)
+        {
+            if (current.Next == nodeOne)
+                prevOne = current;
+
+            if (current.Next == nodeTwo)
+                prevTwo = current;
+
+            current = current.Next;
+        }
+
+        var oneIsHead = Head == nodeOne;
+        var twoIsHead = Head == nodeTwo;
+
+        var oneExists = oneIsHead || prevOne is not null;
+        var twoExists = twoIsHead || prevTwo is not null;
+
+        if (!oneExists || !twoExists)
+            throw new ArgumentException(
+                "Both nodes must belong to this linked list.");
+
+
+        if (nodeOne.Next == nodeTwo)
+        {
+            if (prevOne is not null)
+                prevOne.Next = nodeTwo;
+            else
+                Head = nodeTwo;
+
+            nodeOne.Next = nodeTwo.Next;
+            nodeTwo.Next = nodeOne;
+        }
+
+        else if (nodeTwo.Next == nodeOne)
+        {
+            if (prevTwo is not null)
+                prevTwo.Next = nodeOne;
+            else
+                Head = nodeOne;
+
+            nodeTwo.Next = nodeOne.Next;
+            nodeOne.Next = nodeTwo;
+        }
+
+        else
+        {
+            var nextOne = nodeOne.Next;
+            var nextTwo = nodeTwo.Next;
+
+            if (prevOne is not null)
+                prevOne.Next = nodeTwo;
+            else
+                Head = nodeTwo;
+
+            if (prevTwo is not null)
+                prevTwo.Next = nodeOne;
+            else
+                Head = nodeOne;
+
+            nodeOne.Next = nextTwo;
+            nodeTwo.Next = nextOne;
+        }
+
+        if (Tail == nodeOne)
+            Tail = nodeTwo;
+        else if (Tail == nodeTwo)
+            Tail = nodeOne;
+    }
+
+    public void ReverseList()
+    {
+        if (Size < 1)
+            return;
+
+        var currentHead = Head;
+        var currentTail = Tail;
+
+        Node<T>? prev = null;
+
+        var currentNode = Head;
+
+        while (currentNode is not null)
+        {
+            var nextNode = currentNode.Next;
+            currentNode.Next = prev;
+            prev = currentNode;
+            currentNode = nextNode;
+        }
+
+        Head = currentTail;
+        Tail = currentHead;
     }
 }
