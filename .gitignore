@@ -399,3 +399,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/semester-3/data-structures/week-2-stacks/threeStackExample/.vscode

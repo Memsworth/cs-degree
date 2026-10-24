@@ -3,15 +3,15 @@ public class MyTestStack<T> implements IStack<T> {
     private int size;
     private int currentCount;
 
-    public MyTestStack(int capacity)
-    {
+    public MyTestStack(int capacity) {
         size = capacity;
         currentCount = 0;
         storage = new Object[capacity];
     }
+
     @Override
     public void Push(T data) {
-        if(currentCount == storage.length){
+        if (currentCount == storage.length) {
             throw new ArrayIndexOutOfBoundsException("Stack overflow");
         }
         storage[currentCount++] = data;
@@ -19,12 +19,12 @@ public class MyTestStack<T> implements IStack<T> {
 
     @Override
     public T Pop() {
-        if(currentCount == 0){
+        if (currentCount == 0) {
             throw new IllegalStateException("Stack is empty");
         }
-        T data = (T)storage[--currentCount];
+        T data = (T) storage[--currentCount];
         storage[currentCount] = null;
-        return  data;
+        return data;
     }
 
     @Override
@@ -34,10 +34,10 @@ public class MyTestStack<T> implements IStack<T> {
 
     @Override
     public T Peek() {
-        if(currentCount == 0){
+        if (currentCount == 0) {
             throw new IllegalStateException("Stack is empty");
         }
-        return (T)storage[currentCount - 1];
+        return (T) storage[currentCount - 1];
     }
 
     @Override
@@ -50,5 +50,3 @@ public class MyTestStack<T> implements IStack<T> {
         return currentCount;
     }
 }
-
-
